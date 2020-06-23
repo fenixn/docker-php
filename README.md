@@ -1,7 +1,5 @@
 # docker-php
-PHP Development Environment with Docker
-=======
-# Docker-Compose - PHP, NGINX, MySQL, PHPMyAdmin
+## PHP Development Environment with Docker
 
 This is a docker server setup for a PHP development environment with NGINX, MySQL and PHPMyAdmin. 
 
