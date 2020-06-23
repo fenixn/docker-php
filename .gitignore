@@ -1,5 +1,6 @@
 # Ignore the public directory which stores the app
 /www/*
+!/www/
 
 # Ignore config files
 /.env
