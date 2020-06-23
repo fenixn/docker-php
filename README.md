@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # docker-php
 PHP Development Environment with Docker
 =======
@@ -19,4 +18,3 @@ This is a docker server setup for a PHP development environment with NGINX, MySQ
     docker-compose up
     ```
 4. You should now be able to reach the site at http://localhost. However, the www folder is empty and you must drop your site files in there. You can create a test index.html or index.php in the www folder to test the server before moving on.
->>>>>>> Updated initial gitignore rules.
