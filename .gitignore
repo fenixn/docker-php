@@ -11,6 +11,7 @@
 /etc/nginx/conf.d/*
 !/etc/nginx/conf.d/magento2.conf.sample
 !/etc/nginx/conf.d/test-site.conf
+!/etc/nginx/conf.d/phpmyadmin.conf
 /etc/php/.bashrc
 
 # Ignore phpinfo.php. This file should only exist in the local development environment.
