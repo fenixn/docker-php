@@ -1,0 +1,74 @@
+version: "3.2"
+services:
+  php:
+    build: 
+      context: './etc/php/'
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        USER_ID: ${USER_ID:-0}
+        GROUP_ID: ${GROUP_ID:-0}
+    networks:
+      - backend
+    ports:
+      - "9000:9000"
+    volumes:
+      - ${PROJECT_ROOT}/:/var/www/
+      - ./php.ini:/usr/local/etc/php/php.ini
+      - ./etc/php/.bashrc:/home/www-data/.bashrc
+    container_name: php
+  nginx:
+    build:
+      context: './etc/nginx/'
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+    restart: always
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${PROJECT_ROOT}/:/var/www/
+      - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
+    container_name: nginx
+  mysql:
+    image: mysql:${MYSQL_VERSION:-latest}
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_volume:/var/lib/mysql
+      - ${PROJECT_ROOT}/:/var/www/
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    container_name: mysql
+  phpmyadmin:
+    container_name: phpmyadmin
+    restart: always
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: "${DB_ROOT_PASSWORD}"
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+networks:
+  frontend:
+  backend:
+volumes:
+  mysql_volume:
+    external: true

@@ -1,0 +1,28 @@
+# To host a Magento 2 site, replace [magento2servername] with the server name.
+# Then replace all instances of [magento2directory] witht he actual directory on your Magento 2 Installation
+# Rename this file to remove the .sample ending.
+# Drop the nginx.magento2.conf.sample from the conf-examples directory into your Magento 2 directory,
+# and rename it to remove the .sample ending.
+
+upstream fastcgi_backend {
+    # use tcp connection
+    server  php:9000;
+    # or socket
+    # server   unix:/var/run/php/php7.0-fpm.sock;
+}
+
+server {
+    listen 80;
+
+    server_name [magento2servername];
+
+    set $MAGE_ROOT /var/www/[magento2directory];
+    set $MAGE_DEBUG_SHOW_ARGS 1;
+    set $MAGE_MODE default; 
+
+    index index.php index.html;
+    error_log  /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    
+    include /var/www/[magento2directory]/nginx.conf;
+}

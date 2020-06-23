@@ -1,0 +1,15 @@
+# Ignore the public directory which stores the app
+/www/*
+
+# Ignore config files
+/.env
+/php.ini
+
+# Only track etc sample config files
+/etc/nginx/conf.d/*
+!/etc/nginx/conf.d/magento2.conf.sample
+/etc/php/.bashrc
+
+# Ignore phpinfo.php. This file should only exist in the local development environment.
+# Make sure it does not exist in production.
+/phpinfo.php
