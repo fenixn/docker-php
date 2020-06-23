@@ -1,0 +1,4 @@
+# Setup the Magento CLI by replacing [magento2-directory] with your Magento 2 installation directory
+#alias magento="/var/www/[magento2-directory]/bin/magento"
+#alias mage="/var/www/[magento2-directory]/bin/magento"
+#alias m2="/var/www/[magento2-directory]/bin/magento"
