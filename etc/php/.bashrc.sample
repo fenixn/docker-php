@@ -1,3 +1,7 @@
+# Useful ls shortcuts
+alias ll="ls -l"
+alias lla="ls -l -a"
+
 # Setup the Magento CLI by replacing [magento2-directory] with your Magento 2 installation directory
 #alias magento="/var/www/[magento2-directory]/bin/magento"
 #alias mage="/var/www/[magento2-directory]/bin/magento"
