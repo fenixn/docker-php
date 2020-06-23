@@ -1,6 +1,7 @@
-# Ignore the public directory which stores the app
+# Ignore the public directory which stores the app, except the default test files
 /www/*
-!/www/
+!/www/html/
+!/www/html/index.php
 
 # Ignore config files
 /.env
@@ -9,6 +10,7 @@
 # Only track etc sample config files
 /etc/nginx/conf.d/*
 !/etc/nginx/conf.d/magento2.conf.sample
+!/etc/nginx/conf.d/test-site.conf
 /etc/php/.bashrc
 
 # Ignore phpinfo.php. This file should only exist in the local development environment.
